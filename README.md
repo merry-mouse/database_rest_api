@@ -122,3 +122,32 @@ Make a DELETE request to http://127.0.0.1:8000/kittens/{kitten_id} to delete a k
 - SQLAlchemy: An SQL toolkit and Object-Relational Mapping (ORM) library.
 - Docker: A platform to develop, ship and run applications in containers.
 - PostgreSQL: A powerful, open-source relational database management system.
+
+## Sequence Diagrams
+
+### Get All kittens
+
+```mermaid
+sequenceDiagram
+
+Participant User
+Participant API
+Participant DB
+User->>API: show all kittens (GET:/kittens)
+API->>DB: Query kittens data
+DB-->>API: Return kittens data
+API-->>User: Kittens data in Response
+```
+
+### Create a new kitten
+
+```mermaid
+sequenceDiagram
+Participant User
+Participant API
+Participant DB
+User->>API: Send POST request to /kittens (with new kitten data)
+API->>DB: Insert new kitten data into database
+DB-->>API: Return success confirmation
+API-->>User: Return success confirmation
+```
