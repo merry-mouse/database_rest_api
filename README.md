@@ -50,7 +50,7 @@ http://127.0.0.1:8000/docs
 ## API endpoints
 
 - **GET:** _/kittens_ -> Get a list of **all** kittens.
-- **GET:** _/kittens/{kitten_id}_ -> Get detaild about a specific kitten
+- **GET:** _/kittens/{kitten_id}_ -> Get detailed about a specific kitten
 - **POST:** _/kittens_ -> Add a new kitten to the database
 - **PUT** _/kittens/{kitten_id}_ -> Update kitten details
 - **DELETE** _/kittens/{kitten_id}_ -> Delete a kitten from the database
@@ -68,9 +68,7 @@ Example:
     "name": "Pukko",
     "age": 1,
     "color": "grey-brown-black",
-    "fur": "long",
-    "cuteness": 10,
-    "wisdom": 4
+    "fur": "long"
 }
 ```
 
@@ -82,9 +80,7 @@ Add another kitten with similar POST request, so we have several kittens in the 
     "name": "Shanti",
     "age": 3,
     "color": "grey-brown-black",
-    "fur": "short",
-    "cuteness": 1,
-    "wisdom": 1
+    "fur": "short"
 }
 ```
 
@@ -105,10 +101,8 @@ Example:
 {   "id": 2,
     "name": "Shanti",
     "age": 3,
-    "color": "stripes",
-    "fur": "short",
-    "cuteness": 9,
-    "wisdom": 10
+    "color": "black",
+    "fur": "long"
 }
 ```
 
