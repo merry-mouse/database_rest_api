@@ -4,44 +4,59 @@ This API allows you to manage information about adorable kittens that is stored 
 
 ## Setup
 
-1. Clone the repository on the local machine using this command:
-
-```
-git clone https://github.com/merry-mouse/database_rest_api.git
-```
-
-2. Navigate to the project directory:
+1. Create a kittens-fastapi folder, navigate to the project directory and c:
 
 ```
 cd kittens-fast-api
 ```
 
+2. Clone the repository on your local machine using this command:
+
+```
+git clone https://github.com/merry-mouse/database_rest_api.git
+```
+
 3. Create virtual environment and activate it:
 
 ```
-python3 -m venv venv
+python3 -m venv fastapi-env
+```
+
+4. Activate created fast-api environment with this command:
+
+```
 source venv/bin/activate
 ```
 
-4. Install required dependencies:
+5. Install required dependencies:
 
 ```
 pip install -r requirements.txt
 ```
 
-5. Set up a PostgreSQL database using Docker:
+6. Set up a PostgreSQL database using Docker:
 
 ```
-docker run --name kittens-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+docker run --name kittens-postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
 ```
 
-6. Run FastAPI application:
+You can check currently running Docker containers on the system using this command:
 
 ```
+docker ps
+```
+
+If everything works as expected you will see kittens-postgres db in the list
+
+7. Run FastAPI application from the _api_ folder where is main.py located:
+
+```
+# assuming you are in kittens-fastapi
+cd app/api
 uvicorn main:app --reload
 ```
 
-7. You can use an API platform like Postman, but since we are using FastAPI, it is easier to use automatic Swagger documentation for FastAPI. If uvicorn is running without an error, you can access documantation via this link:
+8. You can use an API platform like Postman, but since we are using FastAPI, it is easier to use automatic Swagger documentation for FastAPI. If uvicorn is running without an error, you can access documantation via this link:
 
 ```
 http://127.0.0.1:8000/docs
@@ -64,7 +79,7 @@ Make a POST request to http://127.0.0.1:8000/kittens with some JSON data.
 Example:
 
 ```
-{   "id": 1,
+{
     "name": "Pukko",
     "age": 1,
     "color": "grey-brown-black",
@@ -76,7 +91,6 @@ Add another kitten with similar POST request, so we have several kittens in the 
 
 ```
 {
-    "id": 2,
     "name": "Shanti",
     "age": 3,
     "color": "grey-brown-black",
