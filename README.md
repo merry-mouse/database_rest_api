@@ -34,7 +34,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-6. Set up a PostgreSQL database using Docker:
+6. Set up a PostgreSQL database using Docker.
+   You can change your pasword db name and port.
+   But it is important to use the same variables in _database.py_ file:
 
 ```
 docker run --name kittens-postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
@@ -51,7 +53,7 @@ If everything works as expected you will see kittens-postgres db in the list
 7. Run FastAPI application from the _api_ folder where is main.py located:
 
 ```
-# assuming you are in kittens-fastapi
+# assuming you are inside kittens-fastapi directory
 cd app/api
 uvicorn main:app --reload
 ```
