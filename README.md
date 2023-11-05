@@ -34,12 +34,31 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-6. Set up a PostgreSQL database using Docker.
-   You can change your pasword db name and port.
-   But it is important to use the same variables in _database.py_ file:
+6. Setup Environment Variables:
+
+Create a .env file at the root of your project directory and define your database connection parameters.
 
 ```
-docker run --name kittens-postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
+# .env file
+export DB_USER=postgres
+export DB_PASSWORD=password
+export DB_HOST=127.0.0.1
+export DB_PORT=5432
+export DB_NAME=postgres
+```
+
+Set environment variables and instruct the shell to read and execute commands from the .env file using this command:
+
+```
+source .env
+```
+
+7. Set up a PostgreSQL database using Docker.
+
+Now, you can run the Docker container utilizing the environment variables from the .env file.
+
+```
+docker run --name kittens-postgres --env-file .env -p 5432:5432 -d postgres
 ```
 
 You can check currently running Docker containers on the system using this command:
@@ -50,7 +69,7 @@ docker ps
 
 If everything works as expected you will see kittens-postgres db in the list
 
-7. Run FastAPI application from the _api_ folder where is main.py located:
+8. Run FastAPI application from the _api_ folder where is main.py located:
 
 ```
 # assuming you are inside kittens-fastapi directory
@@ -58,7 +77,7 @@ cd app/api
 uvicorn main:app --reload
 ```
 
-8. You can use an API platform like Postman, but since we are using FastAPI, it is easier to use automatic Swagger documentation for FastAPI. If uvicorn is running without an error, you can access documantation via this link:
+9. You can use an API platform like Postman, but since we are using FastAPI, it is easier to use automatic Swagger documentation for FastAPI. If uvicorn is running without an error, you can access documantation via this link:
 
 ```
 http://127.0.0.1:8000/docs

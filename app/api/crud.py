@@ -1,6 +1,4 @@
 # reusable functions to interact with the data in the database
-
-
 import models
 import schemas
 from sqlalchemy.orm import Session
